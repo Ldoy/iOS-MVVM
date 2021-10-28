@@ -27,8 +27,6 @@ struct MemoryGame<CardContent> {
     
     mutating func choose(_ card: Card) {
         var cardIndex = self.index(of: card)
-//        var selectedCard = self.cards[cardIndex]
-        
         self.cards[cardIndex].isFaceUp.toggle()
         print(#function, card.isFaceUp)
     }
@@ -50,11 +48,10 @@ struct MemoryGame<CardContent> {
             }
             return false
         }
+         
         func hash(into hasher: inout Hasher) {
-            
         }
 
-        //var id: ObjectIdentifier
         var isFaceUp: Bool = true
         var isMatched: Bool = false
         var content: CardContent

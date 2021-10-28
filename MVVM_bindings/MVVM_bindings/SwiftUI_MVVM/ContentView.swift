@@ -8,6 +8,7 @@
 import SwiftUI
 
 //컨텐트 뷰 만들 때마다 이모지메모리게임을 전달해 주고 싶다.
+//@main
 //struct MemorizeApp: App {
 //    let game = EmojiMemoryGame()
 //
@@ -54,9 +55,9 @@ struct CardView: View {
 
     var body: some View {
         let rectangleShape = RoundedRectangle(cornerRadius: 25.0)
-        
-        ZStack(alignment: .center) {
-            // viewBuilder
+        print("ZS")
+
+       return ZStack(alignment: .center) {
             if card.isFaceUp {
                 rectangleShape
                     .fill()
@@ -70,20 +71,16 @@ struct CardView: View {
                     .fill()
                     .foregroundColor(.blue)
             }
-            
         }
-//        .onTapGesture {
-//            isFaceUp = !isFaceUp
-//        }
     }
 }
 
 struct SwiftUIView_Previews: PreviewProvider {
     static var previews: some View {
-        //let game = EmojiMemoryGame()
-        ContentView()
+        let game = EmojiMemoryGame()
+        ContentView(viewmodel: game)
             .preferredColorScheme(.dark)
-        ContentView()
+        ContentView(viewmodel: game)
             .preferredColorScheme(.light)
     }
 }
