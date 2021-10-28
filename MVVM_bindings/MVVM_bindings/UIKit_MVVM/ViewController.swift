@@ -9,7 +9,10 @@ import UIKit
 import SwiftUI
 
 class ViewController: UIViewController {
-    @IBOutlet weak var textField: UITextField!
+    //view
+    @IBOutlet weak var textField: BoundTextField!
+    
+    var user = User(name: Observable("Tacocat"))
     
     @IBSegueAction func show(_ coder: NSCoder) -> UIViewController? {
         return UIHostingController(coder: coder, rootView: SwiftUIView())
@@ -17,7 +20,10 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        textField.bind(to: user.name)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+        //   self.user.name.value = "Bilbo Baggins"
+        }
     }
 }
 

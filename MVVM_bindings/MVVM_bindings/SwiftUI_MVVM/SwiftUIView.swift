@@ -8,14 +8,37 @@
 import SwiftUI
 
 struct SwiftUIView: View {
-    let imojis: [String] = ["💙", "💚", "💜", "🧡", "💙", "💚", "💜", "🧡", "💙", "💚", "💜", "🧡", "💙", "💚", "💜", "🧡", "💙", "💚", "💜", "🧡"]
+    let imojis: [String] = ["💙", "💚", "💜", "🧡"]
     
     @State var imojiCount = 0
     
+    var body: some View {
+        VStack {
+            ScrollView {
+                LazyVGrid(columns: [GridItem(.adaptive(minimum: 65))]) {
+                    ForEach(imojis[0...imojiCount],
+                            id: \.self,
+                            content: { imoji in
+                        CardView(content: imoji).aspectRatio(2/3, contentMode: .fit)
+                        }
+                    )
+                }
+            }
+            Spacer()
+            HStack(alignment: .center, spacing: 41) {
+                addButton
+                Text("Shuffle")
+                removeButton
+            }
+            .padding(.horizontal)
+        }.font(.largeTitle)
+    }
+    
     var removeButton: some View {
         Button {
-            if imojiCount >= 1 {
+            if imojiCount > 0 {
                 imojiCount -= 1
+                print(imojiCount)
             }
         } label: {
             Image(systemName: "minus.circle")
@@ -25,32 +48,15 @@ struct SwiftUIView: View {
     
     var addButton: some View {
         Button {
-            if imojiCount < imojis.count {
+            if imojiCount < imojis.count - 1{
                 imojiCount += 1
+                print(imojiCount)
             }
         } label: {
             Image(systemName: "plus.circle")
         }
     }
     
-    var body: some View {
-        VStack {
-            HStack {
-                ForEach(imojis[0...imojiCount], id: \.self, content: ({ imoji in
-                    CardView(content: imoji)
-                        .foregroundColor(.orange)
-                        .padding()
-                })
-                )
-            }
-            HStack(alignment: .center, spacing: 41) {
-                addButton
-                Text("Shuffle")
-                removeButton
-            }
-            .padding(.horizontal)
-        }.font(.largeTitle)
-    }
 }
 
 struct CardView: View {
@@ -63,9 +69,10 @@ struct CardView: View {
         ZStack(alignment: .center) {
             // viewBuilder
             if isFaceUp {
-                rectangleShape                .fill()
+                rectangleShape
+                    .fill()
                     .foregroundColor(.white)
-                rectangleShape                .stroke(lineWidth: 3)
+                rectangleShape                .strokeBorder(lineWidth: 8)
                     .foregroundColor(.blue)
                 Text(content)
             } else {

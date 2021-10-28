@@ -7,19 +7,20 @@
 
 import UIKit
 
-
 typealias Observing<ObservedType> = (ObservedType?) -> ()
 
 struct User {
     var name: Observable<String>
 }
 
+// viewmodel
 class Observable<ObservedType> {
     //1
     private var _value: ObservedType?
 
     //3
     var valueChanged: Observing<ObservedType>?
+    
     //5
     public var value: ObservedType? {
         get {
@@ -42,26 +43,27 @@ class Observable<ObservedType> {
         _value = value
     }
 }
-
+//var user = User(name: Observable("Tacocat"))
+//viewModel
 class BoundTextField: UITextField {
-    var changedClosure: (() -> ())?
-    //편집변경, 그니까 텍스트 필드의 글자가 변경되면 호출 할 속성. 왜?
-    
-    //
+    private var changedClosure: (() -> ())?
+
     @objc func valueChanged() {
         changedClosure?()
     }
-    
     
     func bind(to observable: Observable<String>) {
         addTarget(self,
                   action: #selector(valueChanged),
                   for: .editingChanged)
         
+        //observable.bindingChanged(to: self.text ?? "")
+        //바뀐 값을 모델에 반영
         self.changedClosure = { [weak self] in
             observable.bindingChanged(to: self?.text ?? "")
         }
         
+        //모델을 뷰에 반영
         observable.valueChanged = { [weak self] newValue in
             self?.text = newValue
         }
