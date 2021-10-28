@@ -8,18 +8,25 @@
 import Foundation
 
 //view model
-class EmojiMemoryGame {
+// observableObject
+class EmojiMemoryGame: ObservableObject {
     static let imojis = ["💙", "💚", "💜", "🧡", "🥲", "👍", "😎", "🔥"]
     
-    private func creatMemoryGame() -> MemoryGame<String> {
+    static private func creatMemoryGame() -> MemoryGame<String> {
         MemoryGame<String>(numberOfPairsOfCard: 5) { index in
             EmojiMemoryGame.imojis[index]
         }
     }
-    
-    private(set) lazy var model = creatMemoryGame()
+
+    @Published private var model = creatMemoryGame()
 
     var cards: [MemoryGame<String>.Card] {
         return model.cards
+    }
+    
+    //MARK: -Intent
+    func choose(_ card: MemoryGame<String>.Card) {
+        //objectWillChange.send()
+        model.choose(card)
     }
 }

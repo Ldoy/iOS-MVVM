@@ -15,19 +15,34 @@ struct MemoryGame<CardContent> {
     //카드 얼만큼 만들지 정해줘요.
     init(numberOfPairsOfCard: Int, creatCardContent: (Int) -> CardContent) {
         self.cards = [Card]()
-        for pairIndex in 0...numberOfPairsOfCard {
+        for pairIndex in 1...numberOfPairsOfCard {
             let content = creatCardContent(pairIndex)
 
             self.cards.append(Card(content: content, id: pairIndex * 2))
+            
             self.cards.append(Card(content: content, id: pairIndex * 2 + 1))
         }
     }
     
-//    func choose(card: Card) {
-//        print(#function)
-//    }
     
-    // 카드의 상태 여기서 보고 있음
+    mutating func choose(_ card: Card) {
+        var cardIndex = self.index(of: card)
+//        var selectedCard = self.cards[cardIndex]
+        
+        self.cards[cardIndex].isFaceUp.toggle()
+        print(#function, card.isFaceUp)
+    }
+    
+    func index(of card: Card) -> Int {
+        for index in 0..<self.cards.count {
+            if cards[index].id == card.id {
+                return index
+            }
+        }
+        return .zero
+    }
+    
+    // 카드의 상태 여기서 나타냄
     struct Card: Hashable {
         static func == (lhs: MemoryGame<CardContent>.Card, rhs: MemoryGame<CardContent>.Card) -> Bool {
             if lhs.id == rhs.id {
@@ -40,7 +55,7 @@ struct MemoryGame<CardContent> {
         }
 
         //var id: ObjectIdentifier
-        var isFaceUp: Bool = false
+        var isFaceUp: Bool = true
         var isMatched: Bool = false
         var content: CardContent
         var id: Int

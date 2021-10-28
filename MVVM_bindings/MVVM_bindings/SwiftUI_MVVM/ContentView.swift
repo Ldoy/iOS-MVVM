@@ -8,65 +8,41 @@
 import SwiftUI
 
 //컨텐트 뷰 만들 때마다 이모지메모리게임을 전달해 주고 싶다.
-struct MemorizeApp: App {
-    let game = EmojiMemoryGame()
-    
-    var body: some Scene {
-        WindowGroup {
-            ContentView(viewmodel: game)
-        }
-    }
-}
+//struct MemorizeApp: App {
+//    let game = EmojiMemoryGame()
+//
+//    var body: some Scene {
+//        WindowGroup {
+//            ContentView()
+//                .environmentObject(game)
+//        }
+//    }
+//}
 
 struct ContentView: View {
-    let viewmodel: EmojiMemoryGame
-    @State var imojiCount = 0
+    //이 속성이 변경되면 뷰를 다시 그려주세요 = observedObject
+    @ObservedObject var viewmodel: EmojiMemoryGame = EmojiMemoryGame()
+    
+//    @State var imojiCount = 0
     
     var body: some View {
         VStack {
             ScrollView {
                 LazyVGrid(columns: [GridItem(.adaptive(minimum: 65))]) {
-                    //Generic struct 'ForEach' requires that 'MemoryGame<String>.Card' conform to 'Hashable'
-                    // Card에 Identifiable 프로토콜 채택
                     ForEach(viewmodel.cards,
                             id: \.self,
                             content: { cards in
                                 CardView(card: cards).aspectRatio(2/3, contentMode: .fit)
+                                    .onTapGesture {
+                                        viewmodel.choose(cards)
+                                    }
                         }
                     )
                 }
             }
-            Spacer()
-            HStack(alignment: .center, spacing: 41) {
-                addButton
-                Text("Shuffle")
-                removeButton
-            }
-            .padding(.horizontal)
         }.font(.largeTitle)
+         .padding(.horizontal)
     }
-    
-    var removeButton: some View {
-        Button {
-            if imojiCount > 0 {
-                imojiCount -= 1
-                print(imojiCount)
-            }
-        } label: {
-            Image(systemName: "minus.circle")
-        }
-        
-    }
-    
-    var addButton: some View {
-        Button {
-                imojiCount += 1
-                print(imojiCount)
-        } label: {
-            Image(systemName: "plus.circle")
-        }
-    }
-    
 }
 
 struct CardView: View {
@@ -85,11 +61,13 @@ struct CardView: View {
                 rectangleShape
                     .fill()
                     .foregroundColor(.white)
-                rectangleShape                .strokeBorder(lineWidth: 8)
+                rectangleShape
+                    .strokeBorder(lineWidth: 8)
                     .foregroundColor(.blue)
                 Text(card.content)
             } else {
-                rectangleShape                .fill()
+                rectangleShape
+                    .fill()
                     .foregroundColor(.blue)
             }
             
@@ -102,10 +80,10 @@ struct CardView: View {
 
 struct SwiftUIView_Previews: PreviewProvider {
     static var previews: some View {
-        let game = EmojiMemoryGame()
-        ContentView(viewmodel: game)
+        //let game = EmojiMemoryGame()
+        ContentView()
             .preferredColorScheme(.dark)
-        ContentView(viewmodel: game)
+        ContentView()
             .preferredColorScheme(.light)
     }
 }

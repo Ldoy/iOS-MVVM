@@ -14,8 +14,8 @@ class ViewController: UIViewController {
     var user = User(name: Observable("Tacocat"))
     
     @IBSegueAction func show(_ coder: NSCoder) -> UIViewController? {
-        let game = EmojiMemoryGame()
-        return UIHostingController(coder: coder, rootView: ContentView(viewmodel: game))
+        //let game = EmojiMemoryGame()
+        return UIHostingController(coder: coder, rootView: ContentView())
     }
     
     override func viewDidLoad() {
