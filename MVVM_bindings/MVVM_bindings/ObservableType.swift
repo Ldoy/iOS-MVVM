@@ -13,7 +13,9 @@ typealias Observing<ObservedType> = (ObservedType?) -> ()
 struct User {
     var name: Observable<String>
 }
-
+struct test {
+    
+}
 
 class Observable<ObservedType> {
     //1
