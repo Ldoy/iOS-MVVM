@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="VHb-Ej-DKg">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="MVVM_bindings" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EML-3b-XLl">
+                                <rect key="frame" x="205" y="431" width="32" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P9C-63-geg">
+                                <rect key="frame" x="128" y="661" width="159" height="30"/>
+                                <state key="normal" title="SwiftUIStanfordTutorial"/>
+                                <connections>
+                                    <segue destination="YLV-Nz-snF" kind="show" destinationCreationSelector="show:" id="Nu1-Vj-IgO"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="P9C-63-geg" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="128" id="0sJ-Wo-wPQ"/>
+                            <constraint firstItem="EML-3b-XLl" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="LdP-pM-QJz"/>
+                            <constraint firstItem="EML-3b-XLl" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="14" id="hYi-TZ-jym"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="P9C-63-geg" secondAttribute="trailing" constant="127" id="iph-6e-FsV"/>
+                            <constraint firstItem="P9C-63-geg" firstAttribute="top" secondItem="EML-3b-XLl" secondAttribute="bottom" constant="196" id="liT-CT-Bgt"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="P9C-63-geg" secondAttribute="bottom" constant="171" id="qLG-yG-tcq"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="gyB-Ic-eqE"/>
+                    <connections>
+                        <outlet property="textField" destination="EML-3b-XLl" id="Lrc-SW-JXl"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="892.75362318840587" y="83.705357142857139"/>
+        </scene>
+        <!--Hosting Controller-->
+        <scene sceneID="jzs-Xx-wzO">
+            <objects>
+                <hostingController id="YLV-Nz-snF" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="UTG-fY-ey1"/>
+                </hostingController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8yi-VZ-aBX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1723" y="78"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="0UY-do-V5m">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="VHb-Ej-DKg" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="JGU-u4-ukg">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="vaH-KI-aQC"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="El8-oq-QlG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-17.39130434782609" y="83.705357142857139"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
