@@ -14,7 +14,7 @@
 		A82DAA8E2729369F001029D1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A82DAA8D2729369F001029D1 /* Assets.xcassets */; };
 		A82DAA912729369F001029D1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A82DAA8F2729369F001029D1 /* LaunchScreen.storyboard */; };
 		A82DAA99272936CB001029D1 /* ObservableType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82DAA98272936CB001029D1 /* ObservableType.swift */; };
-		A82DAA9B2729749F001029D1 /* SwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82DAA9A2729749F001029D1 /* SwiftUIView.swift */; };
+		A82DAA9B2729749F001029D1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82DAA9A2729749F001029D1 /* ContentView.swift */; };
 		A82DAA9D272975D9001029D1 /* HostingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82DAA9C272975D9001029D1 /* HostingViewController.swift */; };
 		A82DAAA3272A8521001029D1 /* CardGameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82DAAA2272A8521001029D1 /* CardGameModel.swift */; };
 		A82DAAA5272A8604001029D1 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82DAAA4272A8604001029D1 /* ViewModel.swift */; };
@@ -30,7 +30,7 @@
 		A82DAA902729369F001029D1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A82DAA922729369F001029D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A82DAA98272936CB001029D1 /* ObservableType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservableType.swift; sourceTree = "<group>"; };
-		A82DAA9A2729749F001029D1 /* SwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIView.swift; sourceTree = "<group>"; };
+		A82DAA9A2729749F001029D1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		A82DAA9C272975D9001029D1 /* HostingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostingViewController.swift; sourceTree = "<group>"; };
 		A82DAAA2272A8521001029D1 /* CardGameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardGameModel.swift; sourceTree = "<group>"; };
 		A82DAAA4272A8604001029D1 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
@@ -91,7 +91,7 @@
 		A82DAAA1272A8503001029D1 /* SwiftUI_MVVM */ = {
 			isa = PBXGroup;
 			children = (
-				A82DAA9A2729749F001029D1 /* SwiftUIView.swift */,
+				A82DAA9A2729749F001029D1 /* ContentView.swift */,
 				A82DAAA2272A8521001029D1 /* CardGameModel.swift */,
 				A82DAAA4272A8604001029D1 /* ViewModel.swift */,
 			);
@@ -173,7 +173,7 @@
 				A82DAA852729369D001029D1 /* AppDelegate.swift in Sources */,
 				A82DAA99272936CB001029D1 /* ObservableType.swift in Sources */,
 				A82DAA872729369D001029D1 /* SceneDelegate.swift in Sources */,
-				A82DAA9B2729749F001029D1 /* SwiftUIView.swift in Sources */,
+				A82DAA9B2729749F001029D1 /* ContentView.swift in Sources */,
 				A82DAAA5272A8604001029D1 /* ViewModel.swift in Sources */,
 				A82DAA9D272975D9001029D1 /* HostingViewController.swift in Sources */,
 			);
