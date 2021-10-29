@@ -7,8 +7,7 @@
 
 import Foundation
 
-//view model
-// observableObject
+//MARK: -View Model
 class EmojiMemoryGame: ObservableObject {
     static let imojis = ["💙", "💚", "💜", "🧡", "🥲", "👍", "😎", "🔥"]
     
@@ -26,7 +25,7 @@ class EmojiMemoryGame: ObservableObject {
     
     //MARK: -Intent
     func choose(_ card: MemoryGame<String>.Card) {
-        //objectWillChange.send()
+        
         model.choose(card)
     }
 }

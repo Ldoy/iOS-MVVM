@@ -12,10 +12,10 @@ class ViewController: UIViewController {
     @IBOutlet weak var textField: BoundTextField!
     
     var user = User(name: Observable("Tacocat"))
-    
+    let game = EmojiMemoryGame()
+
     @IBSegueAction func show(_ coder: NSCoder) -> UIViewController? {
-        //let game = EmojiMemoryGame()
-        return UIHostingController(coder: coder, rootView: ContentView())
+        return UIHostingController(coder: coder, rootView: ContentView(viewmodel: game))
     }
     
     override func viewDidLoad() {
