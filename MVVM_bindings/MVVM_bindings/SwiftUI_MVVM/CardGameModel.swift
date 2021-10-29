@@ -7,12 +7,10 @@
 
 import Foundation
 
-//model
+//MARK: -Model
 struct MemoryGame<CardContent> {
-    //카드를 가지고 있어요. 데이터
     private(set) var cards: Array<Card>
     
-    //카드 얼만큼 만들지 정해줘요.
     init(numberOfPairsOfCard: Int, creatCardContent: (Int) -> CardContent) {
         self.cards = [Card]()
         for pairIndex in 1...numberOfPairsOfCard {
@@ -26,7 +24,7 @@ struct MemoryGame<CardContent> {
     
     
     mutating func choose(_ card: Card) {
-        var cardIndex = self.index(of: card)
+        let cardIndex = self.index(of: card)
         self.cards[cardIndex].isFaceUp.toggle()
         print(#function, card.isFaceUp)
     }
@@ -40,18 +38,8 @@ struct MemoryGame<CardContent> {
         return .zero
     }
     
-    // 카드의 상태 여기서 나타냄
-    struct Card: Hashable {
-        static func == (lhs: MemoryGame<CardContent>.Card, rhs: MemoryGame<CardContent>.Card) -> Bool {
-            if lhs.id == rhs.id {
-                return true
-            }
-            return false
-        }
-         
-        func hash(into hasher: inout Hasher) {
-        }
-
+    struct Card: Identifiable {
+        
         var isFaceUp: Bool = true
         var isMatched: Bool = false
         var content: CardContent

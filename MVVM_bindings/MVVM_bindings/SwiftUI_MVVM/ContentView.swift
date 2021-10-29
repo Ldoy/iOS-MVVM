@@ -20,18 +20,15 @@ import SwiftUI
 //    }
 //}
 
+//MARK:- View
 struct ContentView: View {
-    //이 속성이 변경되면 뷰를 다시 그려주세요 = observedObject
     @ObservedObject var viewmodel: EmojiMemoryGame = EmojiMemoryGame()
-    
-//    @State var imojiCount = 0
     
     var body: some View {
         VStack {
             ScrollView {
                 LazyVGrid(columns: [GridItem(.adaptive(minimum: 65))]) {
                     ForEach(viewmodel.cards,
-                            id: \.self,
                             content: { cards in
                                 CardView(card: cards).aspectRatio(2/3, contentMode: .fit)
                                     .onTapGesture {
@@ -47,17 +44,12 @@ struct ContentView: View {
 }
 
 struct CardView: View {
-   // @State var isFaceUp: Bool = true
-    
-    //모델의 카드를 전달. 이렇게 전달하는게 좋다. 필요한 것만 전달하기
     let card: MemoryGame<String>.Card
-    //let content: String
 
     var body: some View {
         let rectangleShape = RoundedRectangle(cornerRadius: 25.0)
-        print("ZS")
-
-       return ZStack(alignment: .center) {
+        
+       ZStack(alignment: .center) {
             if card.isFaceUp {
                 rectangleShape
                     .fill()
