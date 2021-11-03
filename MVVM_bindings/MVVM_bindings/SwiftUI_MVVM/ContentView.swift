@@ -30,7 +30,6 @@ struct ContentView: View {
             ScrollView {
                 LazyVGrid(columns: [GridItem(.adaptive(minimum: 65))]) {
                     ForEach(viewmodel.cards,
-                            id: \.self,
                             content: { cards in
                                 CardView(card: cards).aspectRatio(2/3, contentMode: .fit)
                                     .onTapGesture {

@@ -7,8 +7,6 @@
 
 import Foundation
 
-//view model
-// observableObject
 class EmojiMemoryGame: ObservableObject {
     static let imojis = ["💙", "💚", "💜", "🧡", "🥲", "👍", "😎", "🔥"]
     
