@@ -8,6 +8,7 @@
 import Foundation
 
 //MARK: -View Model
+
 class EmojiMemoryGame: ObservableObject {
     static let imojis = ["💙", "💚", "💜", "🧡", "🥲", "👍", "😎", "🔥"]
     

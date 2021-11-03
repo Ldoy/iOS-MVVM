@@ -16,15 +16,16 @@ struct MemoryGame<CardContent> {
         for pairIndex in 1...numberOfPairsOfCard {
             let content = creatCardContent(pairIndex)
 
-            self.cards.append(Card(content: content, id: pairIndex * 2))
+            self.cards.append(Card(content: content,
+                                   id: pairIndex * 2))
             
-            self.cards.append(Card(content: content, id: pairIndex * 2 + 1))
+            self.cards.append(Card(content: content,
+                                   id: pairIndex * 2 + 1))
         }
     }
-    
-    
+
     mutating func choose(_ card: Card) {
-        let cardIndex = self.index(of: card)
+        var cardIndex = self.index(of: card)
         self.cards[cardIndex].isFaceUp.toggle()
         print(#function, card.isFaceUp)
     }
@@ -39,7 +40,16 @@ struct MemoryGame<CardContent> {
     }
     
     struct Card: Identifiable {
-        
+        static func == (lhs: MemoryGame<CardContent>.Card, rhs: MemoryGame<CardContent>.Card) -> Bool {
+            if lhs.id == rhs.id {
+                return true
+            }
+            return false
+        }
+        func hash(into hasher: inout Hasher) {
+            
+        }
+
         var isFaceUp: Bool = true
         var isMatched: Bool = false
         var content: CardContent
