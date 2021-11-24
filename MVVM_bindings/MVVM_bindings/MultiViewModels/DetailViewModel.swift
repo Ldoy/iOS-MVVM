@@ -8,7 +8,7 @@
 import Foundation
 
 protocol DetailViewModelInputInterface {
-    // func OnTouchSaveButton()
+    func onCommit(_ text: String)
 }
 
 protocol DetailViewModelOutputInterface {
@@ -32,7 +32,9 @@ class DetailViewModel: DetailViewModelable {
 }
 
 extension DetailViewModel: DetailViewModelInputInterface {
- 
+    func onCommit(_ text: String) {
+        self.team.teamName = text
+    }
 }
 
 extension DetailViewModel: DetailViewModelOutputInterface {

@@ -9,8 +9,9 @@ import UIKit
 import SwiftUI
 
 class ViewController: UIViewController {
-    @IBOutlet weak var textField: BoundTextField!
+    @IBOutlet weak var textField: MyTexyField!
     let button = UIButton()
+    var userSecond = UserSecond(name: MyObservableSecond(observableObjects: "HOHO"))
     var user = User(name: Observable("Tacocat"))
     let game = EmojiMemoryGame()
 
@@ -23,7 +24,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        textField.bind(to: user.name)
+        textField.bind(to: userSecond.name)
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
         }
     }
@@ -37,6 +38,7 @@ class ViewController: UIViewController {
             if !self.isTabButton {
                 self.circleImage.transform = CGAffineTransform(rotationAngle: (.pi / 4))
             } else {
+                
                 self.circleImage.transform = CGAffineTransform(rotationAngle: (.pi / 4))
             }
             self.isTabButton = !self.isTabButton

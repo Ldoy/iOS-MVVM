@@ -13,6 +13,10 @@ struct User {
     var name: Observable<String>
 }
 
+struct UserSecond {
+    var name: MyObservableSecond<String>
+}
+
 class Observable<ObservedType> {
     private var _value: ObservedType?
     var valueChanged: Observing<ObservedType>?
@@ -39,7 +43,6 @@ class Observable<ObservedType> {
 
 class BoundTextField: UITextField {
     private var changedClosure: (() -> ())?
-
     @objc func valueChanged() {
         changedClosure?()
     }

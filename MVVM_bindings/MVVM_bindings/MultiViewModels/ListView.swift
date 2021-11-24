@@ -10,31 +10,29 @@ import SwiftUI
 //MARK: - 구현1
 struct ListView<T: MainViewModel>: View {
     @ObservedObject var viewModel: T
-    
     var body: some View {
-        ForEach(viewModel.output.teams) { element in
+        NavigationView {
             List {
-                Section(header: Text(element.teamName)) {
+                ForEach(viewModel.output.teams) { element in
+//                    NavigationLink(element.teamName) {
+//                        DetailView(viewModel: DetailViewModel(team: element))
+//                    }
                 }
-            }.onTapGesture {
-                viewModel.input.OnTouchButton()
-            }.sheet(isPresented: $viewModel.isSheetPresented) {
-                viewModel.input.OnDismissSheet()
-            } content: {
-                DetailView(team: DetailViewModel(team: element))
             }
         }
     }
 }
 
 struct DetailView<T: DetailViewModel>: View {
-    @ObservedObject var team: T
+    @ObservedObject var viewModel: T
     @State var text: String = ""
     var body: some View {
         VStack {
             List {
-                TextField(team.output.team.teamName, text: $text)
-                
+                TextField(viewModel.output.team.teamName, text: $text) {
+                    viewModel.input.onCommit(text)
+                    
+                }
             }
         }
     }

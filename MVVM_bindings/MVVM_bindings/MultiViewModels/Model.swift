@@ -33,6 +33,7 @@ protocol MainViewModelInputInterface {
     func OnTouchButton()
     func OnTouchEdit()
     func OnDismissSheet()
+    //func onCommit(_ text: String, id: UUID)
 }
 
 // Ouput
@@ -70,7 +71,10 @@ extension MainViewModel: MainViewModelInputInterface {
     func OnTouchEdit() {
         //
     }
-    
+    func onCommit(_ text: String) {
+
+    }
+
     func OnTouchButton() {
         self.isSheetPresented = true
     }
